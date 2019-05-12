@@ -14,6 +14,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 
+/**
+ * Created by canberkozcelik on 12.05.2019.
+ */
+
 class MainActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
 
     private var currentPagePosition: Int = 0
@@ -101,5 +105,15 @@ class MainActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
     @Subscribe
     fun onSwipeUpStoryEvent(event: SwipeUpStoryEvent) {
         Toast.makeText(this, event.story.btnLink, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        EventBus.getDefault().unregister(this)
     }
 }

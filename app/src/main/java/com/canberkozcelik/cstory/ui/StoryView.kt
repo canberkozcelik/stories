@@ -21,11 +21,11 @@ import kotlinx.android.synthetic.main.view_story.view.*
 /**
  * Created by canberkozcelik on 2019-05-05.
  */
-class StoryView(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : ConstraintLayout(
-    context,
-    attrs,
-    defStyleAttr
-), StoryProgressView.OnStoryProgressListener {
+class StoryView : ConstraintLayout, StoryProgressView.OnStoryProgressListener {
+
+    constructor(context: Context) : super(context)
+    constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet)
+    constructor(context: Context, attributeSet: AttributeSet, defStyleAttr: Int) : super(context, attributeSet, defStyleAttr)
 
     init {
         LayoutInflater.from(context).inflate(R.layout.view_story, this, true)

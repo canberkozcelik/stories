@@ -11,14 +11,18 @@ import androidx.core.content.ContextCompat
 /**
  * Created by canberkozcelik on 2019-05-05.
  */
-class StoryProgressView(context: Context, attributeSet: AttributeSet, defStyleAttr: Int) :
-    ProgressBar(context, attributeSet, defStyleAttr) {
+class StoryProgressView : ProgressBar {
 
     private lateinit var onStoryProgressListener: OnStoryProgressListener
     private lateinit var animator: ObjectAnimator
+    private lateinit var animatorListener: Animator.AnimatorListener
     private var duration: Long
     private val maxProgress: Int = 1000
     private val defaultStoryDuration : Long = 5000
+
+    constructor(context: Context) : super(context)
+    constructor(context: Context, attributeSet: AttributeSet) : super(context, attributeSet)
+    constructor(context: Context, attributeSet: AttributeSet, defStyleAttr: Int) : super(context, attributeSet, defStyleAttr)
 
     init {
         setProgressDrawableTiled(ContextCompat.getDrawable(context, com.canberkozcelik.cstory.R.drawable.progress))
@@ -27,29 +31,28 @@ class StoryProgressView(context: Context, attributeSet: AttributeSet, defStyleAt
         createAnimator()
     }
 
-    private val animatorListener = object : Animator.AnimatorListener {
-        override fun onAnimationStart(animation: Animator) {
-
-        }
-
-        override fun onAnimationEnd(animation: Animator) {
-            reset()
-            onStoryProgressListener.onComplete()
-        }
-
-        override fun onAnimationCancel(animation: Animator) {
-
-        }
-
-        override fun onAnimationRepeat(animation: Animator) {
-
-        }
-    }
-
     private fun createAnimator() {
         animator = ObjectAnimator.ofInt(this, "progress", maxProgress)
         animator.duration = duration
         animator.interpolator = LinearInterpolator()
+        animatorListener = object : Animator.AnimatorListener {
+            override fun onAnimationStart(animation: Animator) {
+
+            }
+
+            override fun onAnimationEnd(animation: Animator) {
+                reset()
+                onStoryProgressListener.onComplete()
+            }
+
+            override fun onAnimationCancel(animation: Animator) {
+
+            }
+
+            override fun onAnimationRepeat(animation: Animator) {
+
+            }
+        }
         animator.addListener(animatorListener)
     }
 

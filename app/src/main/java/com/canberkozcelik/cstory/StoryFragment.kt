@@ -12,7 +12,12 @@ import kotlinx.android.synthetic.main.fragment_story.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 
+/**
+ * Created by canberkozcelik on 12.05.2019.
+ */
+
 class StoryFragment : Fragment(), StoryView.OnStoryInteractionListener {
+
     private var contentReady: Boolean = false
     private var position: Int = -1
     private lateinit var story: Story
@@ -52,17 +57,13 @@ class StoryFragment : Fragment(), StoryView.OnStoryInteractionListener {
     }
 
     override fun onContentReady() {
-        if (story_view != null) {
-            contentReady = true
-            story_view.playStory()
-        }
+        contentReady = true
+        story_view.playStory()
     }
 
     override fun onPreviousStory() {
         if (position == 0) {
-            if (story_view != null) {
-                story_view.playStory()
-            }
+            story_view.playStory()
             return
         }
         EventBus.getDefault().post(PreviousStoryEvent(position))
@@ -77,10 +78,8 @@ class StoryFragment : Fragment(), StoryView.OnStoryInteractionListener {
     }
 
     override fun onSwipeUp(story: Story) {
-        if (story_view != null) {
-            story_view.pauseStory()
-            EventBus.getDefault().post(SwipeUpStoryEvent(story, position))
-        }
+        story_view.pauseStory()
+        EventBus.getDefault().post(SwipeUpStoryEvent(story, position))
     }
 
     @Subscribe
@@ -131,9 +130,7 @@ class StoryFragment : Fragment(), StoryView.OnStoryInteractionListener {
     override fun onDestroyView() {
         super.onDestroyView()
         contentReady = false
-        if (story_view != null) {
-            story_view.destroy()
-        }
+        story_view.destroy()
     }
 }
 
