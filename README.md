@@ -14,5 +14,6 @@ Will add:
 - Preloading images  
 - Countdown sticker 
 
+## Check out the screen record  
 
-<iframe width="560" height="315" src="//sendvid.com/embed/jtsitgkc" frameborder="0" allowfullscreen></iframe>
+https://sendvid.com/jtsitgkc#
