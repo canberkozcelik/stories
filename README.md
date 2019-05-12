@@ -1,4 +1,4 @@
-# CStory
+# Stories
 Basic instagram stories implementation
 
 Properties:  
