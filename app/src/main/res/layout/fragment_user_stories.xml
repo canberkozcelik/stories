@@ -22,6 +22,7 @@
         android:layout_height="40dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
+        android:contentDescription="@string/profile_image"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/story_progress_view" />
 

@@ -1,13 +1,3 @@
-/*
- * Created by canberkozcelik at 2020
- * Last modified 9/19/20 6:21 PM
- */
-
-/*
- * Created by canberkozcelik at 2020
- * Last modified 9/19/20 6:21 PM
- */
-
 package com.canberkozcelik.cstory.ui.custom
 
 import android.content.Context

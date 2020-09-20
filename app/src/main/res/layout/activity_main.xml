@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
-    <com.canberkozcelik.cstory.ui.StoryViewPager
+    <com.canberkozcelik.cstory.ui.custom.StoryViewPager
         android:id="@+id/view_pager_stories"
         android:layout_width="0dp"
         android:layout_height="0dp"

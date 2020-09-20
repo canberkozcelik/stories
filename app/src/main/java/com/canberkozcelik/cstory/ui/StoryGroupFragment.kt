@@ -1,4 +1,4 @@
-package com.canberkozcelik.cstory
+package com.canberkozcelik.cstory.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,20 +8,19 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.canberkozcelik.cstory.data.model.StoryGroupModel
 import com.canberkozcelik.cstory.databinding.FragmentUserStoriesBinding
-import com.canberkozcelik.cstory.event.StoryEvent
-import com.canberkozcelik.cstory.event.StoryGroupEvent
-import com.canberkozcelik.cstory.event.StoryGroupEventType
-import com.canberkozcelik.cstory.event.StoryEventType
+import com.canberkozcelik.cstory.event.*
 import com.canberkozcelik.cstory.ui.adapter.StoriesAdapter
 import com.canberkozcelik.cstory.ui.component.storyprogressview.StoryProgressView
 import com.canberkozcelik.cstory.ui.custom.ScrollDisabledLinearLayoutManager
 import com.canberkozcelik.cstory.utility.Constants
+import com.canberkozcelik.cstory.utility.extension.notNull
 import com.canberkozcelik.cstory.utility.extension.withArgs
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 
 /**
  * Created by canberkozcelik on 12.05.2019.
+ * Last modified 9/20/20 4:52 PM
  */
 
 class StoryGroupFragment : Fragment() {
@@ -105,7 +104,7 @@ class StoryGroupFragment : Fragment() {
         }
         binding.rvStories.apply {
             layoutManager = ScrollDisabledLinearLayoutManager(context)
-            adapter = StoriesAdapter(context, storyGroup.stories)
+            adapter = StoriesAdapter(storyGroup.stories)
         }
     }
 
@@ -113,6 +112,13 @@ class StoryGroupFragment : Fragment() {
         super.onPause()
         binding.storyProgressView.pause()
         EventBus.getDefault().unregister(this)
+    }
+
+    @Subscribe
+    fun onDurationChangedEvent(event: DurationChangedEvent) {
+        event.duration.notNull {
+            binding.storyProgressView.setDurationForIndex(it, event.position)
+        }
     }
 
     @Subscribe

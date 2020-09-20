@@ -5,7 +5,6 @@
 
 package com.canberkozcelik.cstory.ui.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -13,13 +12,9 @@ import com.canberkozcelik.cstory.data.model.Story
 import com.canberkozcelik.cstory.data.model.StoryType
 import com.canberkozcelik.cstory.databinding.ListItemStoryImageBinding
 import com.canberkozcelik.cstory.databinding.ListItemStoryVideoBinding
-import com.canberkozcelik.cstory.utility.CacheDataSourceCustom
-import com.canberkozcelik.cstory.utility.Constants
 
-class StoriesAdapter(context: Context, private val storyList: ArrayList<Story>) :
+class StoriesAdapter(private val storyList: ArrayList<Story>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    var caching = CacheDataSourceCustom(context, Constants.MAX_CACHE_SIZE, Constants.MAX_FILE_SIZE)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
@@ -60,8 +55,10 @@ class StoriesAdapter(context: Context, private val storyList: ArrayList<Story>) 
         val item = storyList[position]
         if (item.type == StoryType.IMAGE.type) {
             return 0
+        } else if (item.type == StoryType.VIDEO.type) {
+            return 1
         }
-        return 1
+        return -1
     }
 
     override fun getItemCount(): Int {
@@ -71,7 +68,7 @@ class StoriesAdapter(context: Context, private val storyList: ArrayList<Story>) 
     inner class StoryVideoViewHolder(private val binding: ListItemStoryVideoBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Story, position: Int) {
-            binding.root.bind(item)
+            binding.root.bind(item, position)
         }
     }
 

@@ -40,7 +40,7 @@ class StoryProgressView : LinearLayout {
     private var currentIndex: Int = 0
     private var callbacks: Callbacks? = null
     internal var isReverse: Boolean = false
-    internal var isComplete: Boolean = false
+    private var isComplete: Boolean = false
 
     private fun bind() {
         removeAllViews()

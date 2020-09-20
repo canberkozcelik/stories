@@ -3,8 +3,9 @@
  * Last modified 9/19/20 7:26 PM
  */
 
-package com.canberkozcelik.cstory.ui
+package com.canberkozcelik.cstory.ui.component
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.view.GestureDetector
@@ -29,7 +30,7 @@ class StoryImageView : ConstraintLayout {
         defStyleAttr
     )
 
-    var binding: ViewStoryImageBinding =
+    private var binding: ViewStoryImageBinding =
         ViewStoryImageBinding.inflate(LayoutInflater.from(context), this, true)
     private var leftOfScreenPixels: Int = 0
     private var adapterPosition: Int = -1
@@ -48,6 +49,7 @@ class StoryImageView : ConstraintLayout {
         adapterPosition = position
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         gestureDetector.onTouchEvent(event)
         if (event?.actionMasked == MotionEvent.ACTION_UP) {

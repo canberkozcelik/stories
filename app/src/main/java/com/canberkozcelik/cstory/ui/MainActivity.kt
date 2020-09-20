@@ -1,14 +1,9 @@
-/*
- * Created by canberkozcelik at 2020
- * Last modified 9/19/20 3:15 PM
- */
-
 package com.canberkozcelik.cstory.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
-import com.canberkozcelik.cstory.adapter.StoryGroupPagerAdapter
+import com.canberkozcelik.cstory.ui.adapter.StoryGroupPagerAdapter
 import com.canberkozcelik.cstory.data.model.Story
 import com.canberkozcelik.cstory.data.model.StoryGroupModel
 import com.canberkozcelik.cstory.databinding.ActivityMainBinding
@@ -17,11 +12,13 @@ import com.canberkozcelik.cstory.event.StoryGroupEvent
 import com.canberkozcelik.cstory.event.StoryGroupEventType
 import com.canberkozcelik.cstory.event.StoryEventType
 import com.canberkozcelik.cstory.helper.CubeTransformer
+import com.canberkozcelik.cstory.ui.custom.StoryViewPager
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 
 /**
  * Created by canberkozcelik on 12.05.2019.
+ * Last modified 9/19/20 3:15 PM
  */
 
 class MainActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
@@ -125,43 +122,36 @@ class MainActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
                 stories = arrayListOf(
                     Story(
                         "1",
-                        "Story 1",
                         "IMAGE",
                         "",
                         "https://r1.ilikewallpaper.net/iphone-8-wallpapers/download/35756/Sunset-Nature-Mountain-Wood-Red-Sky-Lake-iphone-8-wallpaper-ilikewallpaper_com.jpg"
                     ), Story(
+                        "5",
+                        "VIDEO",
+                        "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+                        ""
+                    ), Story(
                         "2",
-                        "Story 2",
                         "IMAGE",
                         "",
                         "https://farm2.staticflickr.com/4038/4261909997_d3bca8acb1_o.jpg"
                     ), Story(
                         "3",
-                        "Story 3",
                         "IMAGE",
                         "",
                         "https://c4.staticflickr.com/9/8244/8662127492_cc4bbc48ba_o.jpg"
                     ), Story(
                         "4",
-                        "Story 4",
                         "IMAGE",
                         "",
                         "https://farm4.staticflickr.com/43/81492549_0483d217c9_o.jpg"
                     ),
                     Story(
                         "6",
-                        "Story 3",
                         "IMAGE",
                         "",
                         "https://c4.staticflickr.com/9/8244/8662127492_cc4bbc48ba_o.jpg"
                     )
-//                    Story(
-//                        "5",
-//                        "Story Video",
-//                        "VIDEO",
-//                        "",
-//                        "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
-//                    )
                 )
             ),
             StoryGroupModel.StoryGroup(
@@ -170,42 +160,34 @@ class MainActivity : AppCompatActivity(), ViewPager.OnPageChangeListener {
                 stories = arrayListOf(
                     Story(
                         "2",
-                        "Story 2",
                         "IMAGE",
                         "",
                         "https://farm2.staticflickr.com/4038/4261909997_d3bca8acb1_o.jpg"
                     ), Story(
                         "3",
-                        "Story 3",
                         "IMAGE",
                         "",
                         "https://c4.staticflickr.com/9/8244/8662127492_cc4bbc48ba_o.jpg"
                     ), Story(
                         "1",
-                        "Story 1",
                         "IMAGE",
                         "",
                         "https://r1.ilikewallpaper.net/iphone-8-wallpapers/download/35756/Sunset-Nature-Mountain-Wood-Red-Sky-Lake-iphone-8-wallpaper-ilikewallpaper_com.jpg"
                     ), Story(
                         "4",
-                        "Story 4",
                         "IMAGE",
                         "",
                         "https://farm4.staticflickr.com/43/81492549_0483d217c9_o.jpg"
                     ),
                     Story(
                         "5",
-                        "Story Video",
                         "VIDEO",
-                        "",
-                        "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+                        "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4\n",
+                        ""
                     )
                 )
             ),
         )
     )
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-    }
 }

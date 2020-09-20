@@ -21,22 +21,7 @@ enum class StoryType(val type: String) {
 @Parcelize
 data class Story(
     @SerializedName("id") @Expose val id: String,
-    @SerializedName("title") @Expose val title: String,
     @SerializedName("type") @Expose val type: String,
     @SerializedName("videoUrl") @Expose val videoUrl: String,
     @SerializedName("imageUrl") @Expose val imageUrl: String,
-) : Parcelable {
-
-    @IgnoredOnParcel
-    @Transient
-    var simpleExoPlayer: SimpleExoPlayer? = null
-    @IgnoredOnParcel
-    @Transient
-    var eventListener: Player.DefaultEventListener? = null
-    @IgnoredOnParcel
-    @Transient
-    var duration: Long? = null
-    @IgnoredOnParcel
-    @Transient
-    var durationChanged: Boolean = false
-}
+) : Parcelable
