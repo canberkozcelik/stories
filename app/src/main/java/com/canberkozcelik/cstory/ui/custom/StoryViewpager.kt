@@ -1,4 +1,4 @@
-package com.canberkozcelik.cstory.ui
+package com.canberkozcelik.cstory.ui.custom
 
 import android.content.Context
 import android.util.AttributeSet
