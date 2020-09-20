@@ -13,3 +13,5 @@ Supports
 
 Known issues:
 - Video is buggy sometimes, for next & previous actions
+
+Using 'com.github.aakira:exoplayer-manager:0.13.0@aar' as wrapper for exo player
